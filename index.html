@@ -4,208 +4,107 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amorance — Distribution de produits de consommation courante</title>
-<meta name="description" content="Amorance sélectionne et distribue des produits de consommation courante auprès des consommateurs français, via les principales places de marché en ligne.">
+<meta name="description" content="Amorance sélectionne et distribue des produits de maison, papeterie, animalerie et décoration auprès des consommateurs français, via les principales places de marché en ligne.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Amorance — Distribution">
 <meta property="og:description" content="Distribution de produits de consommation courante, sélectionnés et vendus en ligne en France.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
+<link rel="alternate" hreflang="fr" href="https://amorance.fr/">
+<link rel="alternate" hreflang="en" href="https://amorance.fr/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600&family=Archivo:wght@400;500;600&display=swap">
-<style>
-  :root{
-    --bleu:#16344A;
-    --encre:#1B1F23;
-    --papier:#F5F3EE;
-    --blanc:#FFFFFF;
-    --filet:#DDD8CE;
-    --ardoise:#656B72;
-    --grenat:#6E2A33;
-  }
-  *{box-sizing:border-box}
-  html{color-scheme:light}
-  body{
-    margin:0;
-    background:var(--papier);
-    color:var(--encre);
-    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
-    font-size:17px;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-  .wrap{max-width:700px;margin:0 auto;padding:0 28px}
-
-  header{padding:84px 0 0}
-  .logo{
-    font-family:"Spectral",Georgia,serif;
-    font-weight:500;
-    font-size:clamp(34px,6.5vw,46px);
-    letter-spacing:.14em;
-    color:var(--bleu);
-    line-height:1;
-    margin:0;
-  }
-  .rule{height:1px;width:60px;background:var(--bleu);margin:22px 0 14px}
-  .baseline{
-    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--ardoise);margin:0;
-  }
-  .lede{
-    font-family:"Spectral",Georgia,serif;
-    font-weight:300;
-    font-size:clamp(21px,3.4vw,26px);
-    line-height:1.5;
-    color:var(--bleu);
-    margin:56px 0 0;
-    text-wrap:balance;
-  }
-
-  section{padding:52px 0;border-top:1px solid var(--filet)}
-  section:first-of-type{margin-top:64px}
-  h2{
-    font-family:"Spectral",Georgia,serif;
-    font-weight:500;
-    font-size:13px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    color:var(--ardoise);
-    margin:0 0 22px;
-  }
-  p{margin:0 0 18px;max-width:64ch}
-  p:last-child{margin-bottom:0}
-  a{color:var(--bleu);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-  a:hover{color:var(--grenat)}
-  a:focus-visible{outline:2px solid var(--bleu);outline-offset:3px}
-
-  /* étapes numérotées : la numérotation encode une séquence réelle */
-  .etapes{list-style:none;margin:0;padding:0;display:grid;gap:26px}
-  .etapes li{display:grid;grid-template-columns:44px 1fr;gap:0 16px;align-items:start}
-  .etapes .n{
-    font-family:"Spectral",Georgia,serif;font-weight:500;font-size:15px;
-    color:var(--bleu);letter-spacing:.1em;padding-top:3px;
-    border-top:1px solid var(--bleu);
-  }
-  .etapes .t{font-weight:600;display:block;margin-bottom:2px}
-  .etapes p{margin:0;font-size:16px;color:var(--encre)}
-
-  .engagements{list-style:none;margin:0;padding:0;display:grid;gap:14px;max-width:64ch}
-  .engagements li{padding-left:20px;position:relative;font-size:16px}
-  .engagements li::before{
-    content:"";position:absolute;left:0;top:.72em;
-    width:8px;height:1px;background:var(--bleu);
-  }
-  .exclusions li::before{background:var(--grenat)}
-
-  .marques{background:var(--blanc);border:1px solid var(--filet);padding:34px 32px}
-  .marques .accent{height:2px;width:34px;background:var(--grenat);margin:0 0 20px}
-  .marques h2{margin-bottom:16px}
-
-  footer{
-    background:var(--bleu);
-    color:var(--papier);
-    margin-top:64px;
-    padding:44px 0 48px;
-  }
-  footer .sig{
-    font-family:"Spectral",Georgia,serif;font-weight:500;
-    letter-spacing:.14em;color:var(--papier);font-size:15px;margin:0 0 16px;
-  }
-  footer p{color:#B9C6D0;font-size:13px;line-height:1.75;margin:0 0 10px;max-width:70ch}
-  footer p:last-child{margin-bottom:0}
-  footer a{color:var(--papier);text-decoration:underline;text-underline-offset:3px}
-  footer a:hover{color:#B9C6D0}
-
-  @media (max-width:520px){
-    body{font-size:16px}
-    header{padding-top:60px}
-    section{padding:42px 0}
-    .etapes li{grid-template-columns:1fr;gap:8px}
-    .etapes .n{border-top:none;padding-top:0}
-  }
-  @media print{
-    body{background:#fff}
-    footer{background:#fff}
-    footer p,footer .sig,footer a{color:#000}
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <h1 class="logo">AMORANCE</h1>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AMORANCE</a>
+    <nav class="nav">
+      <a href="/" aria-current="page">Accueil</a>
+      <a href="/qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="/activite.html">Notre activité</a>
+      <a href="/contact.html">Contact</a>
+      <span class="lang"><span class="on">FR</span> · <a href="/en/">EN</a></span>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <h1 class="logotype">AMORANCE</h1>
     <div class="rule"></div>
     <p class="baseline">Distribution &middot; France</p>
     <p class="lede">Distribution de produits de consommation courante, sélectionnés et vendus en ligne en France.</p>
-  </header>
+  </div>
 
-  <section>
-    <h2>Notre activité</h2>
-    <p>Amorance sélectionne et distribue des produits du quotidien auprès des consommateurs français, via les principales places de marché en ligne.</p>
-    <p>Nous travaillons avec des marques et des distributeurs établis dans l'Union européenne, sur des références neuves, tracées et facturées. Notre sélection privilégie les produits utiles, durables et bien notés par leurs utilisateurs.</p>
-    <p>L'entreprise est basée en Essonne et opère sur l'ensemble du territoire français.</p>
+  <div class="bandeau" style="background-image:url('/assets/img-accueil.jpg')" role="img" aria-label="Cartons de préparation de commandes"></div>
+
+  <section class="first">
+    <h2>Ce que nous distribuons</h2>
+    <div class="categories">
+      <div>
+        <h3>Maison</h3>
+        <p>Rangement, entretien, ustensiles et petits équipements du quotidien.</p>
+      </div>
+      <div>
+        <h3>Papeterie</h3>
+        <p>Écriture, classement, organisation et fournitures de bureau.</p>
+      </div>
+      <div>
+        <h3>Animalerie</h3>
+        <p>Accessoires, entretien et confort, hors alimentation.</p>
+      </div>
+      <div>
+        <h3>Décoration</h3>
+        <p>Objets, textiles d'appoint et petits éléments décoratifs.</p>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>Comment nous travaillons</h2>
-    <ol class="etapes">
-      <li>
-        <span class="n">01</span>
-        <div>
-          <span class="t">Étude de la gamme</span>
-          <p>Nous analysons les références de la marque déjà présentes sur les places de marché françaises, leur positionnement tarifaire et la concurrence existante.</p>
-        </div>
-      </li>
-      <li>
-        <span class="n">02</span>
-        <div>
-          <span class="t">Commande d'essai</span>
-          <p>Nous ouvrons le compte sur une commande de faible volume, portant sur quelques références ciblées, afin de mesurer la rotation réelle avant de nous engager davantage.</p>
-        </div>
-      </li>
-      <li>
-        <span class="n">03</span>
-        <div>
-          <span class="t">Suivi et réassort</span>
-          <p>Nous transmettons sur demande un état des ventes par référence, et nous ajustons les commandes en fonction de la rotation constatée.</p>
-        </div>
-      </li>
-    </ol>
+    <h2>Notre approche</h2>
+    <p>Nous achetons des produits neufs auprès de marques et de distributeurs établis dans l'Union européenne, sur facture, et nous les distribuons aux consommateurs français via les principales places de marché.</p>
+    <p>Notre sélection est volontairement étroite. Nous préférons distribuer correctement un petit nombre de références que référencer un catalogue que nous ne maîtrisons pas.</p>
+    <p><a href="/activite.html">Voir le détail de notre activité</a></p>
   </section>
 
   <section>
     <h2>Nos engagements</h2>
-    <ul class="engagements">
+    <ul class="liste">
       <li>Achat exclusivement auprès de fournisseurs établis dans l'Union européenne.</li>
       <li>Produits neufs, d'origine, accompagnés d'une facture au nom de l'entreprise.</li>
       <li>Respect des politiques tarifaires et de distribution de nos partenaires.</li>
       <li>Transmission d'un état des ventes par référence sur simple demande.</li>
     </ul>
-    <h2 style="margin-top:38px">Ce que nous ne faisons pas</h2>
-    <ul class="engagements exclusions">
-      <li>Aucune importation depuis un pays hors Union européenne.</li>
-      <li>Aucune revente de retours clients, de lots de liquidation ou de produits sans traçabilité.</li>
-      <li>Aucune vente de références pour lesquelles nous n'avons pas de facture fournisseur.</li>
-    </ul>
   </section>
 
   <section>
-    <div class="marques">
+    <div class="encadre">
       <div class="accent"></div>
       <h2>Vous êtes une marque</h2>
-      <p>Nous ouvrons des comptes fournisseurs auprès de marques européennes souhaitant développer leur présence sur les places de marché françaises.</p>
-      <p>Écrivez-nous à <a href="mailto:neil.desmet@amorance.fr">neil.desmet@amorance.fr</a>, nous répondons sous deux jours ouvrés.</p>
+      <p>Nous ouvrons des comptes fournisseurs auprès de marques européennes souhaitant développer leur présence sur les places de marché françaises, dans un cadre maîtrisé.</p>
+      <p><a href="/contact.html">Nous écrire</a></p>
     </div>
   </section>
-</div>
 
-<footer>
+</main>
+
+<footer class="site-footer">
   <div class="wrap">
     <p class="sig">AMORANCE</p>
+    <nav class="footer-nav">
+      <a href="/qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="/activite.html">Notre activité</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/mentions-legales.html">Mentions légales</a>
+      <a href="/confidentialite.html">Politique de confidentialité</a>
+    </nav>
     <p>Distribution de produits de consommation courante &middot; France</p>
-    <p><a href="mailto:neil.desmet@amorance.fr">neil.desmet@amorance.fr</a> &middot; <a href="/mentions-legales.html">Mentions légales</a></p>
+    <p><a href="mailto:neil.desmet@amorance.fr">neil.desmet@amorance.fr</a></p>
   </div>
 </footer>
 
