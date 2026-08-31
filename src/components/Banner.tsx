@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BannerImage from "./BannerImage";
 import { findImage } from "@/lib/images";
 import styles from "./Banner.module.css";
 
@@ -25,15 +25,7 @@ export default function Banner({ name, alt, priority = false }: Props) {
 
   return (
     <div className={styles.root}>
-      <Image
-        className={styles.image}
-        src={source}
-        alt={alt}
-        fill
-        sizes="(max-width: 68rem) 100vw, 68rem"
-        priority={priority}
-        loading={priority ? undefined : "lazy"}
-      />
+      <BannerImage source={source} alt={alt} priority={priority} />
       <span className={styles.veil} aria-hidden="true" />
     </div>
   );

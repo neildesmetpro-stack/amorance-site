@@ -139,6 +139,7 @@ src/
     robots.ts
     sitemap.ts
   components/               en-tête, pied de page, logotype, bandeau, formulaire
+                            plus les composants d'animation, voir plus bas
   components/pages/         une page par fichier
   i18n/                     routes, dictionnaires, typage
   fonts/                    Spectral pour l'image de partage, plus sa licence
@@ -148,6 +149,40 @@ src/
 
 Les quatorze pages sont générées statiquement à la compilation. Il n'y a ni
 middleware, ni rendu à la demande.
+
+## Animations
+
+Tout repose sur IntersectionObserver et des transitions CSS, sans aucune
+dependance d'animation.
+
+- `src/components/Reveal.tsx` fait apparaitre un bloc a son premier passage
+  dans le viewport : opacite et translation de 12 pixels, 500 ms, ease-out,
+  une seule fois. La propriete `delay` sert au decalage des grilles, fixe a
+  70 ms par element.
+- `src/components/StickyHeader.tsx` ajoute le filet bas et une ombre tres
+  legere au dela de 40 pixels de defilement, sur un ecouteur passif regroupe
+  sur une frame.
+- `src/components/BannerImage.tsx` fait apparaitre l'image de bandeau en
+  fondu depuis une echelle de 1,03, en 700 ms, une fois chargee.
+
+Trois regles gouvernent ces composants, et il faut les preserver.
+
+1. **Rien du premier ecran n'est anime.** `Reveal` verifie la position du
+   bloc au montage et ne masque jamais ce qui est deja visible. Le bandeau
+   de l'accueil, marque `priority`, n'est jamais mis en fondu. Cela protege
+   la perception de vitesse et le LCP.
+2. **L'etat initial est toujours l'etat visible.** Le rendu serveur ne porte
+   aucune classe de masquage : sans JavaScript, tout le contenu s'affiche.
+   Seul le script peut masquer, jamais l'inverse.
+3. **`prefers-reduced-motion` est verifie dans le composant et dans le CSS.**
+   Sous cette preference, rien n'est masque et toutes les transitions sont
+   neutralisees.
+
+La marge racine haute de l'observateur, volontairement demesuree, evite un
+piege : quand un element passe d'un coup de sous le viewport a au dessus,
+par un saut vers le bas de page ou une position restauree, le ratio
+d'intersection ne franchit aucun seuil et aucun rappel n'est emis. Sans
+cette marge, le bloc resterait invisible pour toujours.
 
 ## Charte
 

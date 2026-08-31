@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Banner from "@/components/Banner";
 import Logotype from "@/components/Logotype";
+import Reveal from "@/components/Reveal";
 import { pathFor, type Locale } from "@/i18n/routes";
 import type { Dictionary } from "@/i18n/types";
 import styles from "./pages.module.css";
@@ -12,6 +13,7 @@ export default function HomePage({ locale, dict }: Props) {
 
   return (
     <>
+      {/* Premier ecran : aucune animation, ni sur l'accroche ni sur le bandeau. */}
       <div className={`container ${styles.hero}`}>
         <div className={styles.heroGrid}>
           <Logotype size="hero" asHeading mention={dict.logotype.mention} />
@@ -24,48 +26,54 @@ export default function HomePage({ locale, dict }: Props) {
       </div>
 
       <section className="container section">
-        <h2 className={styles.sectionTitle}>{home.distribute.title}</h2>
+        <Reveal>
+          <h2 className={styles.sectionTitle}>{home.distribute.title}</h2>
+        </Reveal>
         <div className="grid-4">
-          {home.distribute.items.map((item) => (
-            <div className={styles.category} key={item.name}>
+          {home.distribute.items.map((item, index) => (
+            <Reveal
+              className={styles.category}
+              delay={index * 70}
+              key={item.name}
+            >
               <h3 className={styles.categoryName}>{item.name}</h3>
               <p className={styles.categoryText}>{item.text}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="container section">
-        <div className={styles.twoColumn}>
+        <Reveal className={styles.twoColumn}>
           <h2>{home.approach.title}</h2>
           <div className="stack measure">
             {home.approach.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="container section">
-        <div className={styles.twoColumn}>
+        <Reveal className={styles.twoColumn}>
           <h2>{home.commitments.title}</h2>
           <ul className="rule-list">
             {home.commitments.items.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </section>
 
       <section className="container section">
         {/* Seul emploi du Grenat sur cette page. */}
-        <div className={`accent-block ${styles.brandBox}`}>
+        <Reveal className={`accent-block ${styles.brandBox}`}>
           <h2>{home.brands.title}</h2>
           <p className="measure">{home.brands.text}</p>
           <Link className={styles.cta} href={pathFor("contact", locale)}>
             {home.brands.cta}
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

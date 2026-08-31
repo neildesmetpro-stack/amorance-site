@@ -1,3 +1,9 @@
+/* L'aplat Filet occupe la zone pendant le chargement : la hauteur est
+   fixee par le rapport d'image, aucun saut de mise en page n'est possible. */
+.root {
+  background-color: var(--c-rule);
+}
+
 .root,
 .fallback {
   position: relative;
@@ -15,6 +21,26 @@
 
 .image {
   object-fit: cover;
+}
+
+.chargement {
+  opacity: 0;
+  transform: scale(1.03);
+}
+
+.charge {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chargement,
+  .charge {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* En affichage etroit, la hauteur minimale rapprochait le cadre du carre

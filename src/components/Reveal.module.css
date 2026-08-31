@@ -1,0 +1,20 @@
+.masque {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.apparu {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+/* Filet de securite : meme si le script s'executait, rien ne bouge. */
+@media (prefers-reduced-motion: reduce) {
+  .masque,
+  .apparu {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

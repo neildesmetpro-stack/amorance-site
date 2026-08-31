@@ -63,6 +63,8 @@ body {
 
 main {
   flex: 1 0 auto;
+  /* L'en-tete reste en vue : l'ancre du lien d'evitement se decale d'autant. */
+  scroll-margin-top: 7rem;
 }
 
 /* ---------- Titres ---------- */
@@ -103,23 +105,53 @@ p {
 
 /* ---------- Liens ---------- */
 
+/* Un lien dans du texte courant garde son soulignement au repos : Bleu sur
+   Encre ne fait que 1,28 pour 1, la couleur seule ne suffirait pas a le
+   distinguer du texte qui l'entoure. Seule sa teinte s'anime. */
 a {
   color: var(--link);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+  text-decoration-color: var(--border);
+  transition: color 220ms ease-out, text-decoration-color 220ms ease-out;
 }
 
-a:hover {
+a:hover,
+a:focus-visible {
   text-decoration-color: currentColor;
 }
 
-/* Seules les transitions de survol et de focus sont autorisees. */
-a,
 button,
 input,
 textarea {
-  transition: color 120ms linear, background-color 120ms linear,
-    border-color 120ms linear;
+  transition: color 150ms ease-out, background-color 150ms ease-out,
+    border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+/* Soulignement qui se deploie de la gauche vers la droite, au survol comme
+   au focus clavier. Reserve aux liens qui ne se coupent jamais sur deux
+   lignes : un pseudo-element absolu ne suivrait pas un lien coupe. */
+.sweep {
+  position: relative;
+  text-decoration: none;
+}
+
+.sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease-out;
+}
+
+.sweep:hover::after,
+.sweep:focus-visible::after {
+  transform: scaleX(1);
 }
 
 :focus-visible {
@@ -279,5 +311,28 @@ ul.rule-list > li {
   header nav,
   .skip-link {
     display: none;
+  }
+}
+
+/* =========================================================================
+   Mouvement reduit
+   Toute animation et toute transition sont neutralisees, et chaque element
+   reste a son etat final. Les composants clients verifient la meme
+   preference avant de masquer quoi que ce soit.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sweep::after {
+    transform: scaleX(1);
   }
 }

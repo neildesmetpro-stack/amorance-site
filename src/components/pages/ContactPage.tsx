@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 import { pathFor, type Locale } from "@/i18n/routes";
 import type { Dictionary } from "@/i18n/types";
 import { site } from "@/lib/site";
@@ -11,13 +12,14 @@ export default function ContactPage({ locale, dict }: Props) {
 
   return (
     <>
+      {/* Titre et premier paragraphe : affichage immediat. */}
       <div className={`container ${styles.pageHead}`}>
         <h1>{contact.title}</h1>
         <p className="intro">{contact.intro}</p>
       </div>
 
       <section className="container section">
-        <div className={styles.contactGrid}>
+        <Reveal className={styles.contactGrid}>
           <ContactForm
             labels={dict.form}
             privacyHref={pathFor("privacy", locale)}
@@ -28,7 +30,9 @@ export default function ContactPage({ locale, dict }: Props) {
               <h2 className={styles.asideTitle}>{contact.emailBlock.title}</h2>
               <p>{contact.emailBlock.text}</p>
               <p>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a className="sweep" href={`mailto:${site.email}`}>
+                  {site.email}
+                </a>
               </p>
             </div>
 
@@ -45,7 +49,7 @@ export default function ContactPage({ locale, dict }: Props) {
               </address>
             </div>
           </aside>
-        </div>
+        </Reveal>
       </section>
     </>
   );

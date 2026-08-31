@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logotype from "./Logotype";
+import StickyHeader from "./StickyHeader";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { mainNav, pathFor, type Locale, type PageId } from "@/i18n/routes";
 import type { Dictionary } from "@/i18n/types";
@@ -13,7 +14,7 @@ type Props = {
 /** En-tete present sur toutes les pages. */
 export default function Header({ locale, dict }: Props) {
   return (
-    <header className={styles.root}>
+    <StickyHeader>
       <div className={`container ${styles.inner}`}>
         <Link className={styles.brand} href={pathFor("home", locale)}>
           <Logotype size="header" mention={dict.logotype.mention} />
@@ -40,6 +41,6 @@ export default function Header({ locale, dict }: Props) {
           />
         </div>
       </div>
-    </header>
+    </StickyHeader>
   );
 }

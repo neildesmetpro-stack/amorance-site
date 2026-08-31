@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import Reveal from "@/components/Reveal";
 import type { Locale } from "@/i18n/routes";
 import type { Dictionary } from "@/i18n/types";
 import styles from "./pages.module.css";
@@ -10,6 +11,7 @@ export default function ActivityPage({ dict }: Props) {
 
   return (
     <>
+      {/* Titre et premier paragraphe : affichage immediat. */}
       <div className={`container ${styles.pageHead}`}>
         <h1>{activity.title}</h1>
         <p className="intro">{activity.intro}</p>
@@ -20,23 +22,38 @@ export default function ActivityPage({ dict }: Props) {
       </div>
 
       <section className="container section">
-        <h2 className={styles.sectionTitle}>{activity.categories.title}</h2>
+        <Reveal>
+          <h2 className={styles.sectionTitle}>{activity.categories.title}</h2>
+        </Reveal>
         <div className="grid-4">
-          {home.distribute.items.map((item) => (
-            <div className={styles.category} key={item.name}>
+          {home.distribute.items.map((item, index) => (
+            <Reveal
+              className={styles.category}
+              delay={index * 70}
+              key={item.name}
+            >
               <h3 className={styles.categoryName}>{item.name}</h3>
               <p className={styles.categoryText}>{item.text}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
-        <p className={`measure ${styles.note}`}>{activity.categories.note}</p>
+        <Reveal>
+          <p className={`measure ${styles.note}`}>{activity.categories.note}</p>
+        </Reveal>
       </section>
 
       <section className="container section">
-        <h2 className={styles.sectionTitle}>{activity.process.title}</h2>
+        <Reveal>
+          <h2 className={styles.sectionTitle}>{activity.process.title}</h2>
+        </Reveal>
         <ol className={styles.steps}>
-          {activity.process.steps.map((step) => (
-            <li className={styles.step} key={step.number}>
+          {activity.process.steps.map((step, index) => (
+            <Reveal
+              as="li"
+              className={styles.step}
+              delay={index * 70}
+              key={step.number}
+            >
               <span className={styles.stepNumber} aria-hidden="true">
                 {step.number}
               </span>
@@ -44,32 +61,32 @@ export default function ActivityPage({ dict }: Props) {
                 <h3>{step.name}</h3>
                 <p>{step.text}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </section>
 
       <section className="container section">
-        <div className={styles.twoColumn}>
+        <Reveal className={styles.twoColumn}>
           <h2>{activity.logistics.title}</h2>
           <div className="stack measure">
             {activity.logistics.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="container section">
         {/* Seul emploi du Grenat sur cette page. */}
-        <div className="accent-block">
+        <Reveal className="accent-block">
           <h2 className={styles.sectionTitle}>{activity.expectations.title}</h2>
           <ul className="rule-list">
             {activity.expectations.items.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </section>
     </>
   );

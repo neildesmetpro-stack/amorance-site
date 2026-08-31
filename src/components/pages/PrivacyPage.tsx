@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import type { Locale } from "@/i18n/routes";
 import type { Dictionary } from "@/i18n/types";
 import styles from "./pages.module.css";
@@ -22,38 +23,38 @@ export default function PrivacyPage({ dict }: Props) {
 
       <section className="container section">
         <div className={styles.legalSections}>
-          <div className={styles.legalSection}>
+          <Reveal className={styles.legalSection}>
             <h2>{privacy.controller.title}</h2>
             <ul className={styles.legalLines}>
               {privacy.controller.lines.map((line) => (
                 <li key={line}>{line}</li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
           {textSections.map((section) => (
-            <div className={styles.legalSection} key={section.title}>
+            <Reveal className={styles.legalSection} key={section.title}>
               <h2>{section.title}</h2>
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
-            </div>
+            </Reveal>
           ))}
 
           {/* Seul emploi du Grenat sur cette page. */}
-          <div className={`accent-block ${styles.legalSection}`}>
+          <Reveal className={`accent-block ${styles.legalSection}`}>
             <h2>{privacy.rights.title}</h2>
             {privacy.rights.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </Reveal>
 
-          <div className={styles.legalSection}>
+          <Reveal className={styles.legalSection}>
             <h2>{privacy.fonts.title}</h2>
             {privacy.fonts.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -135,18 +135,42 @@
   max-width: 46rem;
 }
 
+/* Trace fine au repos, que le soulignement Bleu vient couvrir de la gauche
+   vers la droite au survol comme au focus clavier. */
 .cta {
+  position: relative;
   justify-self: start;
   display: inline-block;
   color: var(--c-blue);
   text-decoration: none;
-  border-bottom: var(--rule-width) solid currentColor;
+  border-bottom: var(--rule-width) solid var(--border);
   padding-bottom: 0.125rem;
   font-size: 1rem;
+  transition: color 220ms ease-out;
 }
 
-.cta:hover {
-  color: var(--c-ink);
+.cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease-out;
+}
+
+.cta:hover::after,
+.cta:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta::after {
+    transform: scaleX(1);
+  }
 }
 
 .contactGrid {

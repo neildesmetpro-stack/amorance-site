@@ -61,8 +61,11 @@
   border-color: var(--c-blue);
 }
 
+/* Bordure et halo Bleu Amorance au focus. L'anneau de focus global est
+   conserve : il reste le repere pour la navigation clavier. */
 .input:focus-visible {
   border-color: var(--c-blue);
+  box-shadow: 0 0 0 3px rgba(22, 52, 74, 0.14);
 }
 
 .textarea {
@@ -109,6 +112,8 @@
 
 .submit {
   justify-self: start;
+  transition: color 150ms ease-out, background-color 150ms ease-out,
+    border-color 150ms ease-out, transform 100ms ease-out;
   font-family: inherit;
   font-size: 0.9375rem;
   letter-spacing: 0.02em;
@@ -120,9 +125,15 @@
   cursor: pointer;
 }
 
-.submit:hover {
+.submit:hover,
+.submit:focus-visible {
   background-color: var(--c-ink);
   border-color: var(--c-ink);
+}
+
+/* Leger enfoncement a l'appui. */
+.submit:active {
+  transform: translateY(1px);
 }
 
 .submit:disabled {
@@ -131,7 +142,19 @@
   border-color: var(--c-slate);
 }
 
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .success {
+  animation: apparition 300ms ease-out both;
   margin: 0;
   padding: 1.25rem 1.5rem;
   border: var(--rule-width) solid var(--border);
