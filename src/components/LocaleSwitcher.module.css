@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list > li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.75rem;
+  margin-right: 0.5rem;
+  background-color: var(--border);
+  vertical-align: -0.05em;
+}
+
+.link,
+.current {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+
+.link {
+  color: var(--c-slate);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--c-blue);
+  text-decoration: underline;
+}
+
+.current {
+  color: var(--c-blue);
+}

@@ -1,0 +1,17 @@
+.root {
+  padding-block: clamp(4rem, 12vw, 9rem);
+  display: grid;
+  gap: 1.75rem;
+  justify-items: start;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9375rem;
+}
+
+.separator {
+  color: var(--c-slate);
+}

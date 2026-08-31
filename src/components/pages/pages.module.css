@@ -1,0 +1,236 @@
+/* Mises en page partagees par les sept pages. */
+
+.hero {
+  padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: end;
+}
+
+.pageHead {
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(1.75rem, 4vw, 2.75rem);
+  display: grid;
+  gap: 1.75rem;
+}
+
+.banner {
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.sectionTitle {
+  margin-bottom: 2rem;
+}
+
+.category {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.categoryName {
+  font-family: var(--font-title-stack);
+  font-weight: 400;
+  font-size: 1.1875rem;
+  color: var(--c-blue);
+  margin: 0;
+}
+
+.categoryText {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule-width) solid var(--border);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0 clamp(1rem, 3vw, 2rem);
+  padding-block: 2rem;
+  border-bottom: var(--rule-width) solid var(--border);
+}
+
+.stepNumber {
+  font-family: var(--font-title-stack);
+  font-weight: 300;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: var(--c-slate);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepBody {
+  display: grid;
+  gap: 0.625rem;
+  max-width: var(--measure);
+}
+
+.commitments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule-width) solid var(--border);
+  max-width: 52rem;
+}
+
+.commitment {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.75rem;
+  border-bottom: var(--rule-width) solid var(--border);
+}
+
+.commitmentName {
+  font-family: var(--font-title-stack);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  color: var(--c-blue);
+  margin: 0;
+}
+
+.commitmentText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: var(--measure);
+}
+
+.faqList {
+  display: grid;
+  gap: 0;
+  border-top: var(--rule-width) solid var(--border);
+}
+
+.faqItem {
+  padding-block: 2rem;
+  border-bottom: var(--rule-width) solid var(--border);
+  display: grid;
+  gap: 0.75rem;
+  max-width: var(--measure);
+}
+
+.faqQuestion {
+  font-size: clamp(1.125rem, 2vw, 1.3125rem);
+  font-weight: 400;
+}
+
+.brandBox {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 46rem;
+}
+
+.cta {
+  justify-self: start;
+  display: inline-block;
+  color: var(--c-blue);
+  text-decoration: none;
+  border-bottom: var(--rule-width) solid currentColor;
+  padding-bottom: 0.125rem;
+  font-size: 1rem;
+}
+
+.cta:hover {
+  color: var(--c-ink);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  align-items: start;
+}
+
+.aside {
+  display: grid;
+  gap: 2.5rem;
+  border-top: var(--rule-width) solid var(--border);
+  padding-top: 2rem;
+}
+
+.asideBlock {
+  display: grid;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+}
+
+.asideTitle {
+  font-family: var(--font-title-stack);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-slate);
+  margin: 0;
+}
+
+.address {
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.legalSections {
+  display: grid;
+  gap: clamp(2.25rem, 5vw, 3.25rem);
+  max-width: var(--measure);
+}
+
+.legalSection {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.legalLines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (max-width: 75rem) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media (max-width: 60rem) {
+  .contactGrid,
+  .twoColumn {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 34rem) {
+  .step {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+.note {
+  margin-top: 2rem;
+  max-width: var(--measure);
+}
+
+/* Lien d'accent, seul emploi du Grenat sur la page concernee. */
+.accentLink {
+  color: var(--c-garnet);
+  text-decoration-color: currentColor;
+}

@@ -1,0 +1,142 @@
+.form {
+  max-width: 40rem;
+}
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hint {
+  font-size: 0.8125rem;
+  color: var(--c-slate);
+  margin: 0;
+}
+
+.alert {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  border: var(--rule-width) solid var(--c-garnet);
+  border-radius: var(--radius);
+  color: var(--c-garnet);
+  font-size: 0.9375rem;
+  background-color: var(--c-white);
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--c-slate);
+}
+
+.optional {
+  color: var(--c-slate);
+}
+
+.required {
+  color: var(--c-slate);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--c-ink);
+  background-color: var(--c-white);
+  border: var(--rule-width) solid var(--c-slate);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.875rem;
+  width: 100%;
+}
+
+.input:hover {
+  border-color: var(--c-blue);
+}
+
+.input:focus-visible {
+  border-color: var(--c-blue);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem 0.75rem;
+  align-items: start;
+}
+
+.checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.25rem 0 0;
+  accent-color: var(--c-blue);
+}
+
+.consentLabel {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.consent .error {
+  grid-column: 1 / -1;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--c-garnet);
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.submit {
+  justify-self: start;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: var(--c-paper);
+  background-color: var(--c-blue);
+  border: var(--rule-width) solid var(--c-blue);
+  border-radius: var(--radius);
+  padding: 0.8125rem 1.75rem;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: var(--c-ink);
+  border-color: var(--c-ink);
+}
+
+.submit:disabled {
+  cursor: default;
+  background-color: var(--c-slate);
+  border-color: var(--c-slate);
+}
+
+.success {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  border: var(--rule-width) solid var(--border);
+  border-left: 3px solid var(--c-blue);
+  border-radius: var(--radius);
+  background-color: var(--c-white);
+  max-width: 40rem;
+}

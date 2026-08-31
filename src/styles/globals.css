@@ -1,0 +1,283 @@
+/* =========================================================================
+   Amorance — feuille de style globale
+   Palette, typographie et primitives de mise en page.
+   Les regles de la charte sont appliquees ici : pas d'ombre portee,
+   pas de degrade, angles de 3 pixels au maximum, aucune animation.
+   ========================================================================= */
+
+:root {
+  /* Palette, valeurs non modifiables sans validation de la charte */
+  --c-blue: #16344a;
+  --c-ink: #1b1f23;
+  --c-paper: #f5f3ee;
+  --c-rule: #ddd8ce;
+  --c-slate: #656b72;
+  --c-garnet: #6e2a33;
+  --c-white: #ffffff;
+
+  /* Roles */
+  --bg: var(--c-paper);
+  --fg: var(--c-ink);
+  --fg-muted: var(--c-slate);
+  --border: var(--c-rule);
+  --focus: var(--c-blue);
+  --link: var(--c-blue);
+
+  /* Typographie */
+  --font-title-stack: var(--font-title), "Spectral", Georgia, "Times New Roman", serif;
+  --font-body-stack: var(--font-body), "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Mesures */
+  --measure: 65ch;
+  --container: 68rem;
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);
+  --section-gap: clamp(3.5rem, 8vw, 6rem);
+  --radius: 2px;
+  --rule-width: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body-stack);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* ---------- Titres ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title-stack);
+  color: var(--c-blue);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1.8vw, 1.3125rem);
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Liens ---------- */
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Seules les transitions de survol et de focus sont autorisees. */
+a,
+button,
+input,
+textarea {
+  transition: color 120ms linear, background-color 120ms linear,
+    border-color 120ms linear;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Primitives de mise en page ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+.section {
+  padding-block: var(--section-gap);
+  border-top: var(--rule-width) solid var(--border);
+}
+
+.section:first-of-type {
+  border-top: 0;
+}
+
+.stack > * + * {
+  margin-top: 1.15em;
+}
+
+/* Intitule en capitales, seul emploi autorise de Spectral 500 avec le logotype. */
+.eyebrow {
+  font-family: var(--font-title-stack);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 1.5rem;
+}
+
+.lede {
+  font-size: clamp(1.1875rem, 2.1vw, 1.4375rem);
+  line-height: 1.5;
+  color: var(--c-blue);
+  max-width: 30ch;
+}
+
+.intro {
+  font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+  line-height: 1.6;
+  max-width: var(--measure);
+}
+
+.rule {
+  border: 0;
+  border-top: var(--rule-width) solid var(--border);
+  margin: 0;
+}
+
+/* Filet Grenat, un seul emploi par page, jamais en aplat de fond. */
+.accent-block {
+  border-left: 3px solid var(--c-garnet);
+  padding-left: clamp(1.25rem, 3vw, 2rem);
+}
+
+.skip-link {
+  /* Le lien s'affiche sur aplat Bleu : son anneau de focus doit passer en Papier. */
+  --focus: var(--c-paper);
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background-color: var(--c-blue);
+  color: var(--c-paper);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Listes ---------- */
+
+ul.plain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule-width) solid var(--border);
+  max-width: var(--measure);
+}
+
+ul.rule-list > li {
+  border-bottom: var(--rule-width) solid var(--border);
+  padding-block: 1rem;
+}
+
+/* ---------- Grilles ---------- */
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: var(--rule-width) solid var(--border);
+}
+
+.grid-4 > * {
+  padding: 1.75rem clamp(1rem, 2vw, 1.75rem) 1.75rem 0;
+  border-bottom: var(--rule-width) solid var(--border);
+}
+
+@media (max-width: 60rem) {
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 34rem) {
+  .grid-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Impression ---------- */
+
+@media print {
+  body {
+    background-color: var(--c-paper);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  header nav,
+  .skip-link {
+    display: none;
+  }
+}

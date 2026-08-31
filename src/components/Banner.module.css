@@ -1,0 +1,35 @@
+.root,
+.fallback {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 200px;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.fallback {
+  background-color: var(--c-blue);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* En affichage etroit, la hauteur minimale rapprochait le cadre du carre
+   et rognait pres d'un quart de la largeur de chaque cote. La reduire
+   garde le bandeau proche du cadrage d'origine. */
+@media (max-width: 34rem) {
+  .root,
+  .fallback {
+    min-height: 150px;
+  }
+}
+
+/* Voile Bleu Amorance a 34 pour cent, valeur fixee par la charte. */
+.veil {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(22, 52, 74, 0.34);
+}
